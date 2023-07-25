@@ -2,9 +2,9 @@ package com.sda.rentalloapp.config;
 
 import com.sda.rentalloapp.domain.Car;
 import com.sda.rentalloapp.domain.Pictures;
+import com.sda.rentalloapp.domain.enumeration.BodyType;
+import com.sda.rentalloapp.domain.enumeration.EngineType;
 import com.sda.rentalloapp.domain.enumeration.FuelType;
-import com.sda.rentalloapp.enumeration.BodyType;
-import com.sda.rentalloapp.enumeration.EngineType;
 import com.sda.rentalloapp.repository.CarRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
