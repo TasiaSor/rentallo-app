@@ -1,5 +1,5 @@
 ### Project requirements
-- CRUD for cars:
+- CRUD for cars: 
   - API urls
     - Read - GET
       - /cars - read all cars
@@ -23,6 +23,7 @@
       - PATCH - partial update
         - /cars/{id}
         - 200/content
+        - 
 - lista aut
 - pojedyńcze auto 
   - model
