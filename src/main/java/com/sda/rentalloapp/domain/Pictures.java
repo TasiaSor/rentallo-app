@@ -18,4 +18,5 @@ public class Pictures {
     String mainPictureUrl;
     @ElementCollection
     List<String> picturesUrls;
+
 }
