@@ -23,7 +23,7 @@
       - PATCH - partial update
         - /cars/{id}
         - 200/content
-        - 
+        
 - lista aut
 - pojedyńcze auto 
   - model
