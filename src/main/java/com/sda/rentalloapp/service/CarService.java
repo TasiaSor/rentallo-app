@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 @Slf4j
 public class CarService {
@@ -28,10 +27,11 @@ public class CarService {
     }
 
     public Car findCarById(Long carId) {
-        // TODO
-
-        throw new RuntimeException("Not implemented yet");
-         return carRepository.findById(carId)
+        return carRepository.findById(carId)
+                .map(car -> {
+                    log.info("found car: [{}]", car);
+                    return car;
+                })
                 .orElseThrow(() -> new WrongCarIdException("No car with id: " + carId));
     }
 }
