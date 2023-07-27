@@ -1,6 +1,7 @@
 package com.sda.rentalloapp.service;
 
 import com.sda.rentalloapp.domain.Car;
+import com.sda.rentalloapp.exeption.WrongCarIdException;
 import com.sda.rentalloapp.repository.CarRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,7 @@ public class CarService {
         // TODO
 
         throw new RuntimeException("Not implemented yet");
+         return carRepository.findById(carId)
+                .orElseThrow(() -> new WrongCarIdException("No car with id: " + carId));
     }
 }
