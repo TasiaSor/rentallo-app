@@ -10,13 +10,11 @@ import java.util.List;
 @Service
 @Slf4j
 public class CarService {
-
+    //    private static final Logger log = LoggerFactory.getLogger(CarService.class);
     private final CarRepository carRepository;
-
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
-
     public List<Car> getAllCars() {
         log.info("getting all cars");
 //        List<Car> cars = carRepository.findAll();
@@ -26,5 +24,11 @@ public class CarService {
         log.info("number of cars: [{}]", cars.size());
         log.debug("all cars: {}", cars);
         return cars;
+    }
+
+    public Car findCarById(Long carId) {
+        // TODO
+
+        throw new RuntimeException("Not implemented yet");
     }
 }
