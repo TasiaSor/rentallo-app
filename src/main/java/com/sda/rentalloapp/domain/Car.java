@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -19,34 +19,38 @@ import lombok.NoArgsConstructor;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     Long id;
 
+    @Column(nullable = false)
+    @NotNull
+    @Size(min = 2)
     String model;
 
+    @Column(nullable = false)
+    @Size(min = 2)
     String brand;
 
     @Enumerated(EnumType.STRING)
     FuelType fuelType;
-
     @Enumerated(EnumType.STRING)
     EngineType engineType;
-
     @Enumerated(EnumType.STRING)
     BodyType bodyType;
-
     int numberOfSeats;
-
     int trunkCapacityInLitres;
 
     String combustionPer100Km;
 
+    @Column(unique = true)
     String bodySerialNumber;
 
     int pricePerDayInPolishGrosz;
-
     boolean available;
 
     int rangeInKm;
 
+    @Column(nullable = false)
+    @NotNull
     Pictures pictures;
 }

@@ -4,11 +4,16 @@ import com.sda.rentalloapp.domain.enumeration.BodyType;
 import com.sda.rentalloapp.domain.enumeration.EngineType;
 import com.sda.rentalloapp.domain.enumeration.FuelType;
 import lombok.Builder;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Builder
 public record CarDto(
         Long id,
+        @NotNull
+        @Size(min = 2)
         String model,
+        @NotNull
+        @Size(min = 2)
         String brand,
         FuelType fuelType,
         EngineType engineType,
@@ -20,6 +25,7 @@ public record CarDto(
         int pricePerDayInPolishGrosz,
         boolean available,
         int rangeInKm,
+        @NotNull
         PicturesDto pictures
 ) {
 }
