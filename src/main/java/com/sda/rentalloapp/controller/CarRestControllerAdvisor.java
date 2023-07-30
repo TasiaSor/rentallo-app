@@ -3,6 +3,7 @@ package com.sda.rentalloapp.controller;
 import com.sda.rentalloapp.dto.ResponseDto;
 import com.sda.rentalloapp.exeption.WrongCarIdException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,8 +20,6 @@ public class CarRestControllerAdvisor {
     @ExceptionHandler(WrongCarIdException.class)
     public ResponseDto handleCarNotFoundException(WrongCarIdException exc) {
         String path = getCurrentRequestPath();
-
-
         return ResponseDto.builder()
                 .timestamp(LocalDateTime.now())
                 .status(HttpStatus.NOT_FOUND.value())
@@ -29,7 +28,6 @@ public class CarRestControllerAdvisor {
                 .path(path)
                 .build();
     }
-
     private static String getCurrentRequestPath() {
         return ServletUriComponentsBuilder.fromCurrentRequest()
                 .build()
@@ -37,17 +35,17 @@ public class CarRestControllerAdvisor {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseDto handleBadRequest(MethodArgumentNotValidException exc) {
-        String path = getCurrentRequestPath();
+    @ExceptionHandler({MethodArgumentNotValidException.class, DataIntegrityViolationException.class})
+        public ResponseDto handleBadRequest(Exception exc) {
+            log.warn("exc: ", exc);
+            String path = getCurrentRequestPath();
 
-        return ResponseDto.builder()
-                .timestamp(LocalDateTime.now())
-                .status(HttpStatus.BAD_REQUEST.value())
-                .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
-                .path(path)
-                .message(exc.getMessage())
-                .build();
+            return ResponseDto.builder()
+                    .timestamp(LocalDateTime.now())
+                    .status(HttpStatus.BAD_REQUEST.value())
+                    .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
+                    .path(path)
+                    .message(exc.getMessage())
+                    .build();
+        }
     }
-
-}

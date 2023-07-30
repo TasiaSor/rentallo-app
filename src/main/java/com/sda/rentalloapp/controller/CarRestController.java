@@ -32,9 +32,11 @@ public class CarRestController {
         log.info("trying to find car with id: [{}]", carId);
         return carMapper.fromEntityToDto(carService.findCarById(carId));
     }
-
     @PostMapping("/cars")
     public void addCar(@RequestBody @Valid CarDto toSave) {
         log.info("adding new car: [{}]", toSave);
+
+        var result = carService.addCar(carMapper.fromDtoToEntity(toSave));
+
     }
 }
