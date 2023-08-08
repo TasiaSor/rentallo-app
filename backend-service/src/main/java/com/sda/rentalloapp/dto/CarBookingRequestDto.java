@@ -1,6 +1,5 @@
 package com.sda.rentalloapp.dto;
 
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
