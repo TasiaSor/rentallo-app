@@ -49,9 +49,10 @@ public class CarRestController {
                 .toUri();
 
         // TODO: homework - cut to only path without server part
+        //  return ResponseEntity.created(URI.create(path.getPath())).build();
+
         return ResponseEntity.created(path).build();
     }
-
 
     @DeleteMapping("/cars/{id}")
     public ResponseEntity<Void> deleteCar(@PathVariable("id") Long carId) {

@@ -44,6 +44,7 @@ public class DataInitializer implements CommandLineRunner {
                         List.of()))
                 .build();
 
+
         carRepository.save(mazda);
     }
 }
