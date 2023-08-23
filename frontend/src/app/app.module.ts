@@ -15,9 +15,17 @@ import { AboutComponent } from './components/about/about.component';
 import { RentsHistoryComponent } from './components/rents-history/rents-history.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {aboutUrl, carsUrl, clientsUrl, homePageUrl, notFoundPageUrl, rentsHistoryUrl} from "./models/urls";
 
+const routingTable: Routes = [
+  {path: homePageUrl, component: HomeComponent},
+  {path: rentsHistoryUrl, component: RentsHistoryComponent},
+  {path: carsUrl, component: CarsComponent},
+  {path: clientsUrl, component: ClientsComponent},
+  {path: aboutUrl, component: AboutComponent},
+  {path: notFoundPageUrl, component: NotFoundComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,14 +45,7 @@ import {aboutUrl, carsUrl, clientsUrl, homePageUrl, notFoundPageUrl, rentsHistor
     MatCardModule,
     MatButtonModule,
     MatButtonToggleModule,
-    RouterModule.forRoot([
-      {path: homePageUrl, component: HomeComponent},
-      {path: rentsHistoryUrl, component: RentsHistoryComponent},
-      {path: carsUrl, component: CarsComponent},
-      {path: clientsUrl, component: ClientsComponent},
-      {path: aboutUrl, component: AboutComponent},
-      {path: notFoundPageUrl, component: NotFoundComponent}
-    ])
+    RouterModule.forRoot(routingTable)
   ],
   providers: [],
   bootstrap: [AppComponent]
